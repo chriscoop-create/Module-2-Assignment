@@ -1,0 +1,34 @@
+public class Main {
+    public static void main(String[] args) {
+        Bank myBank = new Bank();  
+        myBank.deposit(100);
+        myBank.withdraw(40);
+        myBank.deposit(25);
+        myBank.listInteractions();
+    }
+}
+
+class Bank {
+    private double amount;
+    private double[] transactions = new double[100];
+    private int count = 0;
+
+    public void deposit(double value) {
+        amount += value;
+        transactions[count] = value;
+        count++;
+    }
+
+    public void withdraw(double value) {
+        amount -= value;
+        transactions[count] = -value;
+        count++;
+    }
+
+    public void listInteractions() {
+        System.out.println("All transactions:");
+        for (int i = 0; i < count; i++) {
+            System.out.println(transactions[i]);
+        }
+    }
+}
